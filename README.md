@@ -1,6 +1,11 @@
 # kuaidian
-
 > kuaidianTech
+
+#目前正在进行的开发
++ 注册登录页面-----register
+
+#开发通用公共组件
++ 注册/登录顶部导航-----regBar
 
 ## Build Setup
 
@@ -17,5 +22,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

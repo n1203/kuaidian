@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <i class="iconfont icon-K"></i>
     <router-view/>
   </div>
 </template>
@@ -19,5 +19,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#app i{
+	color: #f60;
+	font-size: 10rem;
 }
 </style>
