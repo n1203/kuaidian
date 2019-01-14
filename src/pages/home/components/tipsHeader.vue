@@ -20,7 +20,8 @@
 	}
 </script>
 
-<style>
+<style scoped>
+	/* @import '~@/static/css/varibles.styl' */
 .tipsHeader{
 	padding: 1rem;
 }
