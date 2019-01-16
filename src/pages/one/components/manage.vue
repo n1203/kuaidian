@@ -1,22 +1,16 @@
 <template>
 	<div class="release">
 		<div class="logo">
-			<img src="../../../assets/logo2.png" />
+			<img src="../../../../static/images/logo.png" />
 		</div>
 		<div class="center">
 			<div class="release-L">
 				<ul>
-					<li>
-						<span>名称</span>
-						<input type="text" placeholder="资料的名称" />
+					<li v-for="(item,index) of list" :key="item.id">
+						<span>{{item.name}}</span>
+						<input type="text" :placeholder=item.tip />
 					</li>
 					<li>
-						<span>编号</span>
-						<input type="text" placeholder="资料的编号" />
-					</li><li>
-						<span>URL</span>
-						<input type="text" placeholder="微信分享URL" />
-					</li><li>
 						<span>科目</span>
 						<select>
 							<option value="volvo">Volvo</option>
@@ -29,13 +23,11 @@
 			</div>
 			<div class="release-R">
 				<ul>
-					<li>英语知识技巧</li>
-					<li>高中知识技巧</li>
-					<li>初中知识技巧</li>
+						<li @click="handleright(index)" v-for="(chose,index) in right" :class="{active:activenow==chose.id}">{{chose.name}}</li>
 				</ul>
 			</div>
 		</div>
-		<div class="sub">
+		<div @click="handleclick()" class="sub">
 			<input type="submit" />
 		</div>
 	</div>
@@ -45,9 +37,39 @@
 	export default {
 		data() {
 			return {
-				
+				activenow:0,
+				list:[
+				{ name:"名称",
+					id:1,
+					tip:"资料的名称"},{
+					name:"编号",
+					id:2,
+					tip:"资料的编号"
+				},{
+					name:"URL",
+					id:3,
+					tip:"微信分享UR"
+				}
+				],
+				right:[
+					{name:"英语知识技巧",
+					id:0},
+					{name:"高中知识技巧",
+					id:1},
+					{name:"初中知识技巧",
+					id:2},
+				]
 			};
+		},
+		methods:{
+			handleclick:function(){
+				alert("success")
+			},
+			handleright:function(a){
+				this.activenow = a
+			}
 		}
+		
 	}
 </script>
 
@@ -62,11 +84,14 @@
 		width: 60%;
 		margin: 0 auto;
 		/* border: 1px solid black; */
+		margin-top:100px ;
+		box-shadow:0px 0px 20px 2px rgba(0,0,0,0.1);
 	}
 	.release .logo{
-		height: 160px;
+		height: 90px;
 		overflow: hidden;
-		margin-top: 20px;
+		margin-left:30px ;
+		padding-top:30px ;
 	}
 	.release .logo img{
 		height: 80%;
@@ -74,10 +99,11 @@
 	}
 	.release .center{
 		width: 100%;
-		height: 350px;
+		height: 400px;
 		/* border: 1px solid red; */
 		position: relative;
-		margin-top:50px ;
+		margin-top:60px ;
+		margin-left:30px ;
 	}
 	.release .center .release-L{
 		width: 500px;
@@ -99,68 +125,91 @@
 	.release .center .release-L li input{
 		padding: 4px 0;
 		text-indent: 10px;
-		height: 22px;
-		line-height: 22px;
-		width: 300px;
+		height: 32px;
+		line-height: 32px;
+		width: 320px;
 		border: 1px solid #7E8C8D;
 		outline: 0;
 		background: #fff;
-		border-radius: 22px;
+		border-radius: 32px;
 		margin-left: 30px;
-		color: #999;
+		color: #b4b4b4;
+		font-size: 17px;
+		opacity: 0.5;
 	}
 	.release .center .release-L li select{
 		text-indent: 10px;
-		height: 30px;
-		line-height: 30px;
-		width: 300px;
+		height: 40px;
+		line-height: 40px;
+		width: 320px;
 		border: 1px solid #7E8C8D;
 		background: #fff;
-		border-radius: 30px;
+		border-radius: 40px;
 		margin-left: 30px;
 		color: #999;
 		outline: none;
+		opacity: 0.5;
+		font-size: 17px;
 	}
 	.release .center .release-R{
 		width: 300px;
 		height:200px;
-		padding-left:100px ;
+		padding-left:130px ;
 		/* border: 1px solid green; */
 		position: absolute;
 		right: 0;
 		top: 0;
 		border-left: 2px solid #e1e1e1;
-		
+		margin-right:80px ;
+
 	}
 	.release .center .release-R li{
 		list-style: none;
-		width: 150px;
-		height: 30px;
-		border-radius: 30px;
+		width: 180px;
+		height: 40px;
+		border-radius: 40px;
 		/* margin-top: 20px; */
 		text-align: center;
-		line-height: 30px;
+		line-height:40px;
+		background:#FFFFFF;
+		color: #FF6600;
+		font-weight: 520;
+		font-size: 18px;
+		margin-bottom:35px;
+		border: 1px solid #FF6600;
+		cursor: pointer;
+	}
+	.release .center .release-R li.active{
+		list-style: none;
+		width: 180px;
+		height: 40px;
+		border-radius: 40px;
+		/* margin-top: 20px; */
+		text-align: center;
+		line-height:40px;
 		background: #ffad00;
 		color: #FFFFFF;
-		font-weight: 500;
-		font-size: 17px;
-		margin-bottom:30px;
+		font-weight: 520;
+		font-size: 18px;
+		margin-bottom:35px;
+		border: none;
 	}
 	.release .sub{
 		display: block;
 		text-align: center;
 	}
 	.release .sub input{
-		width: 220px;
-		height: 50px;
+		width: 270px;
+		height: 60px;
 		background: #FFAD00;
 		color: #FFFFFF;
 		text-align: center;
 		border: 0;
 		outline: none;
 		border-radius: 50px;
-		font-size: 20px;
-		
+		font-size: 25px;
+		font-weight: 500;
+		margin-bottom: 50px;
 	}
 	
 	

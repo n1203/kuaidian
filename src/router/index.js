@@ -4,6 +4,7 @@ import Home from '@/pages/home/Home'
 // import home from '@/components/home'
 import One from '@/pages/one/Home'
 import Admin from '@/pages/one/admin'
+import Message from '@/pages/one/message'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
 			path: '/admin',
 			name: 'Admin',
 			component: Admin
+		},
+		{
+			path: '/message',
+			name: 'Message',
+			component: Message
 		}
   ]
 })
